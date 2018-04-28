@@ -103,9 +103,33 @@
     </table>
             </div>
             <div class="col-xs-6  marcador">
-              	<h1 align="center"></h1>
-            </div>
-        </div> <!-- Fim row 1 -->
+              	      <thead>
+        <tr>
+          <th>IdProfessor</th>
+          <th>Nome Professores</th>
+          <th>Mãe professor</th>
+          <th>Titulação</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+	
+	<%
+		Professor p = (Professor) request.getAttribute("professor");
+				
+	%>
+	
+	<tr>
+          <td><%= p.getIdProfessor() %></td>
+          <td><%= p.getNomeProfessor() %></td>
+          <td><%= p.getNomeMae() %></td>          
+          <td><%= p.getTitulação() %></td>          
+   
+	</tr>
+	         
+          </div>
+        </div> 
+      <!-- Fim row 1 -->
         
 	 	<div class="row">
 	       	<div class="col-xs-6  marcador">

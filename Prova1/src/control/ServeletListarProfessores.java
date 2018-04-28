@@ -17,7 +17,7 @@ import model.Professor;
 /**
  * Servlet implementation class ServeletListarProfessores
  */
-@WebServlet("/listarProfessores")
+@WebServlet("/listar")
 public class ServeletListarProfessores extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
@@ -50,7 +50,7 @@ public class ServeletListarProfessores extends HttpServlet {
 		// Criar atributo novo
 		request.setAttribute("professores", professores);
 
-		RequestDispatcher rd = request.getRequestDispatcher("listarProfessores.jsp");
+		RequestDispatcher rd = request.getRequestDispatcher("listarprofessores.JSP");
 		rd.forward(request, response);
 	
 	}

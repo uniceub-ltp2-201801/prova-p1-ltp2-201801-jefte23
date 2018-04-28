@@ -2,6 +2,7 @@ package control;
 
 import java.io.IOException;
 import java.sql.Connection;
+import java.util.ArrayList;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -44,9 +45,15 @@ public class ServletExibirProfessor extends HttpServlet {
 		
 		ProfessorDAO pd = new ProfessorDAO(conexao);
 		
-		Professor p = pd.getUnicoProfessor(idProfessor);
+		Professor pro = pd.getUnicoProfessor(idProfessor);
 		
-		request.getSession().setAttribute("professor", p);
+		// Obter conta
+		ArrayList<Professor> professores = pd.getProfessor();
+		
+		// Criar atributo novo
+		request.setAttribute("professores", professores);
+		request.setAttribute("professor", pro);
+
 		
 		// Repassar o request/respose para o JSP
 		RequestDispatcher rd = request.getRequestDispatcher("exibirprofessor.JSP");
