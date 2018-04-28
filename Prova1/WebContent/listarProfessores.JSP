@@ -1,5 +1,12 @@
-<%@ page language="java" contentType="text/html; charset=ISO-8859-1"
-    pageEncoding="ISO-8859-1"%>
+<%@ page language="java" contentType="text/html; charset=ISO-8859-1" pageEncoding="ISO-8859-1"%>
+<%@page import="com.sun.xml.internal.ws.api.ha.StickyFeature"%>
+<%@page import="java.util.*"%>
+<%@page import="java.time.LocalDate"%>
+<%@page import="dao.*"%>
+<%@page import="control.*"%>
+<%@page import="model.*"%>
+
+
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html lang="pt-br">
   <head>
@@ -57,7 +64,43 @@
      <div class="container">
 		<div class="row">
             <div class="col-xs-6  marcador">
-        		<h1 align="center"></h1>
+        		 <table class="table table-striped table-bordered table-hover">
+      <thead>
+        <tr>
+          <th>IdProfessor</th>
+          <th>Nome Professores</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+	
+	<%
+		List<Professor> professores = (List<Professor>) request.getAttribute("professores");
+		for (int i = 0; i< professores.size();i++)
+		{
+			
+	%>
+	
+	<tr>
+          <td>
+          	<a href="exibirProfessor?idProfessor=<%=professores.get(i).getIdProfessor()%>">
+          		<%=professores.get(i).getIdProfessor() %>
+          	</a>
+          </td>
+          
+          <td>
+            <a href="exibirProfessor?idProfessor=<%=professores.get(i).getIdProfessor()%>">
+            	<%=professores.get(i).getNomeProfessor() %>
+            </a>
+           </td>
+	</tr>
+	         
+       <%
+			}
+       %>   
+
+        </tbody>
+    </table>
             </div>
             <div class="col-xs-6  marcador">
               	<h1 align="center"></h1>
