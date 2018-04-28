@@ -35,6 +35,9 @@ public class ProfessorDAO {
 
 			// Preparar o SQL
 			String sql = "SELECT * FROM faculdade.professor order by NomeProfessor;";
+			
+			System.out.println(conexao);
+			
 			ps = conexao.prepareStatement(sql);
 
 			// Executar o SQL
@@ -42,9 +45,6 @@ public class ProfessorDAO {
 
 			// Criar cliente com base no rs
 			rs.first();
-
-			
-			System.out.println("<<< PAssei AQUI >>>");
 			
 			while (rs.next()) {
 				Professor p = new Professor(rs.getInt("idProfessor"), rs.getString("nomeProfessor"), 
