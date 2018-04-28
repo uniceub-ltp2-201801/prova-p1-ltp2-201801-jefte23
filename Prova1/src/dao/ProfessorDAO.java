@@ -53,11 +53,6 @@ public class ProfessorDAO {
 				professores.add(p);
 			}
 			
-			for (int i = 0; i < professores.size(); i++) {
-				System.out.println(professores.get(i).getIdProfessor());
-				
-			}
-			
 			rs.close();
 			ps.close();
 
@@ -68,5 +63,47 @@ public class ProfessorDAO {
 		return professores;
 
 	}
+	
+	public Professor getUnicoProfessor(int idProfessor){
+		
+		// Formato data e Hora
+		DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd");
+		
+		// Instanciar os objetos
+		PreparedStatement ps = null;
+		ResultSet rs = null;
+		Professor resultado = null;
+		
+		try {
+
+			// Preparar o SQL
+			String sql = "SELECT * FROM faculdade.professor WHERE idProfessor= ?;";
+			
+			//System.out.println(conexao);
+			
+			ps = conexao.prepareStatement(sql);
+			// Setar os parametros do SQL
+			ps.setInt(1, idProfessor);
+
+			// Executar o SQL
+			rs = ps.executeQuery();
+
+			// Criar cliente com base no rs
+			rs.first();
+
+			resultado = new Professor(rs.getInt("idProfessor"), rs.getString("NomeProfessor"), 
+					LocalDate.parse(rs.getString("DataNasc"), formatter) , rs.getString("NomeMae"), rs.getInt("Titulacao"));
+			
+			rs.close();
+			ps.close();
+
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+
+		return resultado;
+
+	}
+
 
 }
