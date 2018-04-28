@@ -36,7 +36,7 @@ public class ProfessorDAO {
 			// Preparar o SQL
 			String sql = "SELECT * FROM faculdade.professor order by NomeProfessor;";
 			
-			System.out.println(conexao);
+			//System.out.println(conexao);
 			
 			ps = conexao.prepareStatement(sql);
 
@@ -47,8 +47,8 @@ public class ProfessorDAO {
 			rs.first();
 			
 			while (rs.next()) {
-				Professor p = new Professor(rs.getInt("idProfessor"), rs.getString("nomeProfessor"), 
-						LocalDate.parse(rs.getString("dataNasc"), formatter) , rs.getString("nomeMae"), rs.getInt("titulação"));
+				Professor p = new Professor(rs.getInt("idProfessor"), rs.getString("NomeProfessor"), 
+						LocalDate.parse(rs.getString("DataNasc"), formatter) , rs.getString("NomeMae"), rs.getInt("Titulacao"));
 
 				professores.add(p);
 			}

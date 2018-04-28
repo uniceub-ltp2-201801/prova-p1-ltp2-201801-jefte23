@@ -25,7 +25,7 @@ public class Conexao {
 
 			// Realizar conexão com banco de dados
 			conexao = DriverManager.getConnection(url, username, password);
-
+			
 		} catch (ClassNotFoundException | SQLException e) {
 			// Mostra o erro
 			e.printStackTrace();
